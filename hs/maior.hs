@@ -1,6 +1,9 @@
-maior :: [Int] -> [Int]
+maior :: [Int] -> Int
 maior [] = 0
-maior (a:x) = maior [ b | b <- x, b <= a ]
-              ++ [a] ++
-              maior [ b | b <- x, b > a ]
-              ([a]!!(length[a]))
+maior (x:xs) = maiorAux x xs
+
+maiorAux :: Int -> [Int] -> Int
+maiorAux m [] = m
+maiorAux m (x:res)
+    | x > m = maiorAux x res
+    | otherwise = maiorAux m res
